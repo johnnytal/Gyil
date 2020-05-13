@@ -9,32 +9,32 @@
       "loop": false
     },
     "b": {
-      "start": 2.9,
+      "start": 3,
       "end": 6,
       "loop": false
     },
     "c": {
-      "start": 5.9,
+      "start": 6,
       "end": 9,
       "loop": false
     },
     "d": {
-      "start": 8.9,
+      "start": 9,
       "end": 12,
       "loop": false
     },
     "e": {
-      "start": 11.9,
+      "start": 12,
       "end": 15,
       "loop": false
     },
     "f": {
-      "start": 14.9,
+      "start": 15,
       "end": 18,
       "loop": false
     },
     "g": {
-      "start": 17.9,
+      "start": 18,
       "end": 21,
       "loop": false
     }

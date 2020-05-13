@@ -11,21 +11,20 @@ function create(){
 	    var gyilNote = this.add.sprite(coords[x][0], coords[x][1], notes[x]).setInteractive();
 	    gyilNote.setScale(0.85);
 
-	 	this.input.on('gameobjectdown', function (pointer, gameObject) {
-	        playNote(gameObject); 
+	 	gyilNote.on('pointerdown', function (pointer) {
+	        playNote(this); 
 	    });
-	    
-	 	this.input.on('gameobjectover', function (pointer, gameObject) {
+	 	gyilNote.on('pointerover', function (pointer) {
 	 		if (pointer.isDown){
-	        	playNote(gameObject); 
+	        	playNote(this); 
 	        }
 	    });
 
-	    this.input.on('gameobjectup', function (pointer, gameObject) {
-	        gameObject.clearTint();
+	    gyilNote.on('pointerup', function (pointer) {
+	        this.clearTint();
 	    });
-	    this.input.on('gameobjectout', function (pointer, gameObject) {
-	        gameObject.clearTint();
+	    gyilNote.on('pointerout', function (pointer) {
+	        this.clearTint();
 	    });
     }
     
