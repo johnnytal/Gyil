@@ -15,6 +15,7 @@ function start(){
 	    parent: 'game',
 	    width: WIDTH,
 	    height: HEIGHT,
+	    backgroundColor: '#2d2d2d',
 	    scene: {
 	        preload: preload,
 	        create: create
@@ -25,6 +26,9 @@ function start(){
 		    width: WIDTH,
 		    height: HEIGHT, 
 		    orientation: Phaser.Scale.Orientation.LANDSCAPE
+		},
+	    input :{
+			activePointers:3
 		}
 	};
 

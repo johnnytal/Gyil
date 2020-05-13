@@ -1,36 +1,35 @@
 function create(){
-	this.cameras.main.setBackgroundColor(new Phaser.Display.Color(225, 255, 225));
-    
-    var gyil = this.add.sprite(400, 300, 'gyil');
+    var gyil = this.add.sprite(WIDTH / 2, HEIGHT / 2, 'gyil');
     gyil.setScale(.8);
-    //gyil.displayWidth=game.config.width*.5; gyil.scaleY=gyil.scaleX
     
     notes = ['a', 'b', 'c', 'd', 'e', 'f', 'g']; 
     colors = [0xFDEC9E, 0xE9A43C, 0xB77A29, 0xBEAF18, 0x799D31, 0x799D31, 0x118800];
-    coords = [[168, 300], [259, 288], [345, 288], [427, 295], [508, 288], [580, 285], [648, 275]];
+    coords = [[gyil.x - 232, gyil.y], [gyil.x - 141, gyil.y - 12], [gyil.x - 55, gyil.y - 12], 
+    [gyil.x + 27, gyil.y - 5], [gyil.x + 108, gyil.y - 12], [gyil.x + 180, gyil.y - 15], [gyil.x + 248, gyil.y - 25]];
 
     for (x = 0; x < notes.length; x++){
 	    var gyilNote = this.add.sprite(coords[x][0], coords[x][1], notes[x]).setInteractive();
 	    gyilNote.setScale(0.85);
-	    
-	    gyilNote.on('pointerdown', function (pointer) {
-	    	playNote(this);  
+
+	 	this.input.on('gameobjectdown', function (pointer, gameObject) {
+	        playNote(gameObject); 
 	    });
 	    
-	    gyilNote.on('pointerover', function (pointer) {
-	    	playNote(this);  
+	 	this.input.on('gameobjectover', function (pointer, gameObject) {
+	 		if (pointer.isDown){
+	        	playNote(gameObject); 
+	        }
 	    });
 
-	    gyilNote.on('pointerup', function (pointer) {
-	        this.clearTint();
+	    this.input.on('gameobjectup', function (pointer, gameObject) {
+	        gameObject.clearTint();
 	    });
-	    gyilNote.on('pointerout', function (pointer) {
-	        this.clearTint();
+	    this.input.on('gameobjectout', function (pointer, gameObject) {
+	        gameObject.clearTint();
 	    });
     }
     
     plugIns();
-    initAd();
 }
 
 function playNote(_note){
@@ -49,6 +48,8 @@ function plugIns(){
 	try{
 	    StatusBar.hide();
 	} catch(e){} 
+	
+	initAd();
 }
 
 function initAd(){
@@ -56,9 +57,11 @@ function initAd(){
     	banner: 'ca-app-pub-9795366520625065/6208375739'
     };
     
-    if(AdMob) AdMob.createBanner({
-	    adId: admobid.banner,
-	    position: AdMob.AD_POSITION.TOP_BOTTOM,
-    	autoShow: true
-	});
+    try{
+	    if(AdMob) AdMob.createBanner({
+		    adId: admobid.banner,
+		    position: AdMob.AD_POSITION.TOP_BOTTOM,
+	    	autoShow: true
+		});
+	} catch(e){}
 }
