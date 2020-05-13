@@ -5,8 +5,10 @@ document.addEventListener("resume", onResume, false);
 //window.onload = start;
 
 function start(){ 
-    WIDTH = 800; 
-    HEIGHT = 600; 
+	var gameRatio = window.innerWidth / window.innerHeight;
+	
+    WIDTH = Math.ceil(640*gameRatio); 
+    HEIGHT = 640; 
 
 	var config = {
 	    type: Phaser.WEBGL,
@@ -21,10 +23,11 @@ function start(){
 		    parent: 'game',
 		    mode: Phaser.Scale.FIT,
 		    width: WIDTH,
-		    height: HEIGHT
+		    height: HEIGHT, 
+		    orientation: Phaser.Scale.Orientation.LANDSCAPE
 		}
 	};
-	
+
 	game = new Phaser.Game(config);
 }
 
