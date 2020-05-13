@@ -5,37 +5,37 @@
   "spritemap": {
     "a": {
       "start": 0,
-      "end": 2,
+      "end": 3,
       "loop": false
     },
     "b": {
-      "start": 2,
-      "end": 4,
-      "loop": false
-    },
-    "c": {
-      "start": 4,
+      "start": 3,
       "end": 6,
       "loop": false
     },
-    "d": {
+    "c": {
       "start": 6,
-      "end": 8,
+      "end": 9,
       "loop": false
     },
-    "e": {
-      "start": 8,
-      "end": 10,
-      "loop": false
-    },
-    "f": {
-      "start": 10,
+    "d": {
+      "start": 9,
       "end": 12,
       "loop": false
     },
-    "g": {
+    "e": {
       "start": 12,
-      "end": 14,
+      "end": 15,
+      "loop": false
+    },
+    "f": {
+      "start": 15,
+      "end": 18,
+      "loop": false
+    },
+    "g": {
+      "start": 18,
+      "end": 21,
       "loop": false
     }
   }
