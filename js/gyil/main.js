@@ -10,6 +10,24 @@ function create(){
     for (x = 0; x < notes.length; x++){
 	    var gyilNote = this.add.sprite(coords[x][0], coords[x][1], notes[x]).setInteractive();
 	    gyilNote.setScale(0.85);
+	    
+        var BtnStick = this.add.sprite(100, 100, 'btn_stick').setInteractive().setScale(0.65);
+        var BtnMallet = this.add.sprite(100, 250, 'btn_mallet').setInteractive().setScale(0.65);
+        var BtnBoth = this.add.sprite(100, 400, 'btn_both').setInteractive().setScale(0.65);
+        
+	 	BtnStick.on('pointerdown', function (pointer) {
+	        toggleStick(this); 
+	    });
+	 	BtnMallet.on('pointerdown', function (pointer) {
+	        toggleStick(this); 
+	    });
+	 	BtnBoth.on('pointerdown', function (pointer) {
+	        toggleStick(this); 
+	    });
+	    
+    	stickStates = [BtnStick, BtnMallet, BtnBoth];
+		stickState = stickStates[0].texture.key;
+		BtnStick.setTint(colors[1]);
 
 	 	gyilNote.on('pointerdown', function (pointer) {
 	        playNote(this); 
@@ -29,6 +47,7 @@ function create(){
     }
     
     plugIns();
+    initAd();
 }
 
 function playNote(_note){
@@ -37,7 +56,17 @@ function playNote(_note){
 	
 	_note.setTint(colors[keyPlace]);
 	
-	game.sound.playAudioSprite('gyilSprite', key);
+	if (stickState == 'btn_mallet') game.sound.playAudioSprite('gyilSpriteMallet', key);
+	else if (stickState == 'btn_stick') game.sound.playAudioSprite('gyilSpriteStick', key);
+	else if (stickState == 'btn_both') game.sound.playAudioSprite('gyilSpriteBoth', key);
+}
+
+function toggleStick(_this){
+	for (k = 0; k < stickStates.length; k++){
+		stickStates[k].clearTint();
+		stickState = _this.texture.key;
+		_this.setTint(colors[1]);
+	}
 }
 
 function plugIns(){
@@ -47,8 +76,6 @@ function plugIns(){
 	try{
 	    StatusBar.hide();
 	} catch(e){} 
-	
-	initAd();
 }
 
 function initAd(){
@@ -56,11 +83,9 @@ function initAd(){
     	banner: 'ca-app-pub-9795366520625065/6208375739'
     };
     
-    try{
-	    if(AdMob) AdMob.createBanner({
-		    adId: admobid.banner,
-		    position: AdMob.AD_POSITION.TOP_BOTTOM,
-	    	autoShow: true
-		});
-	} catch(e){}
+    if(AdMob) AdMob.createBanner({
+	    adId: admobid.banner,
+	    position: AdMob.AD_POSITION.TOP_BOTTOM,
+    	autoShow: true
+	});
 }
