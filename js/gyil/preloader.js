@@ -13,6 +13,7 @@ function preload (){
     this.load.image("btn_stick", "assets/gyil/images/btn_stick.png");
     this.load.image("btn_mallet", "assets/gyil/images/btn_mallet.png");
     this.load.image("btn_both", "assets/gyil/images/btn_both.png");
+    this.load.image("octave_btn", "assets/gyil/images/octave.png");
     
     this.load.audioSprite('gyilSpriteStick', 'assets/gyil/audio/audio.json', 'assets/gyil/audio/gyilStick.mp3');
     this.load.audioSprite('gyilSpriteMallet', 'assets/gyil/audio/audio.json', 'assets/gyil/audio/gyilMallet.mp3');
