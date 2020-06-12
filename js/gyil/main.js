@@ -1,17 +1,15 @@
 function create(){
-    var gyil = this.add.sprite(WIDTH / 2, HEIGHT / 2, 'gyil');
-    gyil.setScale(.8);
+    var gyil = this.add.sprite(WIDTH / 2 + 75, HEIGHT / 2, 'gyil');
     
     octave = '1';
     notes = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
     colors = [0xFDEC9E, 0xE9A43C, 0xB77A29, 0xBEAF18, 0x799D31, 0x799D31, 0x118800];
-    coords = [[gyil.x - 232, gyil.y], [gyil.x - 141, gyil.y - 12], [gyil.x - 55, gyil.y - 12], 
-    [gyil.x + 27, gyil.y - 5], [gyil.x + 108, gyil.y - 12], [gyil.x + 180, gyil.y - 15], [gyil.x + 248, gyil.y - 25]];
+    coords = [[gyil.x - 232 - 170, gyil.y], [gyil.x - 141 - 99, gyil.y - 12], [gyil.x - 55 - 40, gyil.y - 12], 
+    [gyil.x + 45, gyil.y - 20], [gyil.x + 185, gyil.y - 25], [gyil.x + 312, gyil.y - 28], [gyil.x + 423, gyil.y - 35]];
 
     for (x = 0; x < notes.length; x++){
 	    var gyilNote = this.add.sprite(coords[x][0], coords[x][1], notes[x]).setInteractive();
-	    gyilNote.setScale(0.85);
-	    
+
         var BtnStick = this.add.sprite(100, 100, 'btn_stick').setInteractive();
         var BtnMallet = this.add.sprite(100, 250, 'btn_mallet').setInteractive();
         var BtnBoth = this.add.sprite(100, 400, 'btn_both').setInteractive();
@@ -110,7 +108,6 @@ function initAd(){
     
     if(AdMob) AdMob.createBanner({
 	    adId: admobid.banner,
-	    adSize: AdMob.AD_SIZE.FLUID,
 	    position: AdMob.AD_POSITION.BOTTOM_CENTER,
     	autoShow: true
 	});
