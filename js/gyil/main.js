@@ -71,7 +71,7 @@ function create(){
 
 function playNote(_note){
 	var key = _note.texture.key + octave;
-	var keyPlace = notes.indexOf(key);
+	var keyPlace = notes.indexOf(_note.texture.key);
 	
 	_note.setTint(colors[keyPlace]);
 	
@@ -110,6 +110,7 @@ function initAd(){
     
     if(AdMob) AdMob.createBanner({
 	    adId: admobid.banner,
+	    adSize: 'SMART_BANNER',
 	    position: AdMob.AD_POSITION.BOTTOM_CENTER,
     	autoShow: true
 	});
