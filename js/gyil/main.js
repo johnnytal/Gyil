@@ -110,7 +110,7 @@ function initAd(){
     
     if(AdMob) AdMob.createBanner({
 	    adId: admobid.banner,
-	    adSize: WIDTH,
+	    adSize: AdMob.AD_SIZE.FLUID,
 	    position: AdMob.AD_POSITION.BOTTOM_CENTER,
     	autoShow: true
 	});
