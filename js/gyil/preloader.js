@@ -14,6 +14,7 @@ function preload (){
     this.load.image("btn_mallet", "assets/gyil/images/btn_mallet.png");
     this.load.image("btn_both", "assets/gyil/images/btn_both.png");
     this.load.image("octave_btn", "assets/gyil/images/octave.png");
+    this.load.image("bg", "assets/gyil/images/bg.jpg");
     
     this.load.audioSprite('gyilSpriteStick', 'assets/gyil/audio/audio.json', 'assets/gyil/audio/gyilStick.mp3');
     this.load.audioSprite('gyilSpriteMallet', 'assets/gyil/audio/audio.json', 'assets/gyil/audio/gyilMallet.mp3');
@@ -24,7 +25,7 @@ function progressBar(_this){
 	var progressBar = _this.add.graphics();
     var progressBox = _this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(240, 270, 320, 50);
+    progressBox.fillRect(490, 270, 320, 50);
     
     var loadingText = _this.make.text({
         x: WIDTH / 2,
@@ -55,8 +56,8 @@ function progressBar(_this){
         style: {
             font: '18px monospace',
             fill: '#ffffff'
-                }
-            });
+            }
+        });
  
         assetText.setOrigin(0.5, 0.5);
             
@@ -64,7 +65,7 @@ function progressBar(_this){
         percentText.setText(parseInt(value * 100) + '%');
         progressBar.clear();
         progressBar.fillStyle(0xffffff, 1);
-        progressBar.fillRect(250, 280, 300 * value, 30);
+        progressBar.fillRect(500, 280, 300 * value, 30);
     });
     
     _this.load.on('fileprogress', function (file) {

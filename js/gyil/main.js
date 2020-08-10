@@ -1,24 +1,30 @@
 function create(){
+    let image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'bg');
+	let scaleX = this.cameras.main.width / image.width;
+	let scaleY = this.cameras.main.height / image.height;
+	let scale = Math.max(scaleX, scaleY);
+	image.setScale(scale).setScrollFactor(0);
+    
     var gyil = this.add.sprite(WIDTH / 2 + 75, HEIGHT / 2, 'gyil');
     
     octave = '1';
     notes = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
-    colors = [0xFDEC9E, 0xE9A43C, 0xB77A29, 0xBEAF18, 0x799D31, 0x799D31, 0x118800];
+    colors = [0xFEBCAD, 0xE9A43C, 0xB77A29, 0xBEAF18, 0x799D31, 0x799D31, 0x118800];
     coords = [[gyil.x - 232 - 170, gyil.y], [gyil.x - 141 - 99, gyil.y - 12], [gyil.x - 55 - 40, gyil.y - 12], 
     [gyil.x + 45, gyil.y - 20], [gyil.x + 185, gyil.y - 25], [gyil.x + 312, gyil.y - 28], [gyil.x + 423, gyil.y - 35]];
 
     for (x = 0; x < notes.length; x++){
 	    var gyilNote = this.add.sprite(coords[x][0], coords[x][1], notes[x]).setInteractive();
 
-        var BtnStick = this.add.sprite(100, 100, 'btn_stick').setInteractive();
-        var BtnMallet = this.add.sprite(100, 250, 'btn_mallet').setInteractive();
-        var BtnBoth = this.add.sprite(100, 400, 'btn_both').setInteractive();
+        var BtnStick = this.add.sprite(80, 100, 'btn_stick').setInteractive();
+        var BtnMallet = this.add.sprite(80, 265, 'btn_mallet').setInteractive();
+        var BtnBoth = this.add.sprite(80, 430, 'btn_both').setInteractive();
        
-        var BtnOct = this.add.sprite(100, 570, 'octave_btn').setInteractive();
+        var BtnOct = this.add.sprite(1200, 560, 'octave_btn').setInteractive();
         
 	 	BtnOct.on('pointerdown', function (pointer) {
 	       	if (octave == '1'){
-	       		this.tint = 0xfaafff;
+	       		this.tint = 0xf66fff;
 	       		octave = '2';
 	       	}
 	       	else{
@@ -64,7 +70,7 @@ function create(){
     }
     
     plugIns();
-    initAd();
+   // initAd();
 }
 
 function playNote(_note){

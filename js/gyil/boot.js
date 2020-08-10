@@ -15,7 +15,7 @@ function start(){
 	    parent: 'game',
 	    width: WIDTH,
 	    height: HEIGHT,
-	    backgroundColor: '#432333',
+	    backgroundColor: '#a5b0b6',
 	    scene: {
 	        preload: preload,
 	        create: create
