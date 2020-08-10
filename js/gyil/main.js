@@ -19,8 +19,8 @@ function create(){
         var BtnStick = this.add.sprite(80, 100, 'btn_stick').setInteractive();
         var BtnMallet = this.add.sprite(80, 265, 'btn_mallet').setInteractive();
         var BtnBoth = this.add.sprite(80, 430, 'btn_both').setInteractive();
-       
-        var BtnOct = this.add.sprite(1200, 560, 'octave_btn').setInteractive();
+
+        var BtnOct = this.add.sprite(this.cameras.main.width - 150, 560, 'octave_btn').setInteractive();
         
 	 	BtnOct.on('pointerdown', function (pointer) {
 	       	if (octave == '1'){
@@ -32,7 +32,7 @@ function create(){
 	       		this.tint = 0xffffff;
 	       	}
 	       	
-	   	 	var rnd = game.rnd.integerInRange(0, 16);
+	   	 	var rnd = Phaser.Math.Between(0, 15);
 	   	 	if (rnd == 2){ 	 	 	
 				if(AdMob) AdMob.showInterstitial();
 		  	}
@@ -70,7 +70,7 @@ function create(){
     }
     
     plugIns();
-   // initAd();
+    initAd();
 }
 
 function playNote(_note){
@@ -88,10 +88,11 @@ function toggleStick(_this){
 	for (k = 0; k < stickStates.length; k++){
 		stickStates[k].clearTint();
 		stickState = _this.texture.key;
-		_this.setTint(colors[1]);
+
+		_this.setTint(colors[1]);	
 	}
 	
- 	var rnd = game.rnd.integerInRange(0, 15);
+ 	var rnd = Phaser.Math.Between(0, 15);
  	if (rnd == 2){ 	 	 	
 		if(AdMob) AdMob.showInterstitial();
   	}
